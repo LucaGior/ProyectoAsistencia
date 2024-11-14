@@ -69,7 +69,7 @@
                 }
     
                 $alerta = [
-                    "tipo" => "recargar",
+                    "tipo" => "simple",
                     "titulo" => "Registro exitoso",
                     "texto" => "Las notas se han guardado correctamente.",
                     "icono" => "success"

@@ -45,5 +45,13 @@
             </div>
             <a class="navbar-item" href="<?php echo APP_URL; ?>dashboard/">Estadisticas Alumnos</a>            
         </div>
+        <div class="navbar-end">          
+            <a class="navbar-item" href="<?php echo APP_URL."logOut/"; ?>" id="btn_exit" >
+                Salir
+            </a>
+
+                
+            
+        </div>
     </div>
 </nav>

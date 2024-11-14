@@ -6,21 +6,7 @@
     use app\controllers\AlumnoController;
     
 
-    /* Verifico si modulo alumno esta definido y llamo al metodo segun su valor */
-    if (isset($_POST['modulo_alumno'])) {
-        $insAlumno = new AlumnoController();
-        
-        if ($_POST['modulo_alumno']=="registrar") {
-            echo $insAlumno->registrarAlumnoControlador();
-        }
-        if ($_POST['modulo_alumno'] == "actualizar") {
-            header('Content-Type: application/json');
-            echo $insAlumno->actualizarAlumnoControlador($_POST);
-        }
-        if ($_POST['modulo_alumno'] == "eliminar") {
-            echo $insAlumno->eliminarAlumnoControlador();
-        }
-    } 
+    
     
     if (isset($_GET)) {
         /* Instancio controlador */
@@ -61,6 +47,23 @@
             exit;
         }
     }
-    
+    /* Verifico si modulo alumno esta definido y llamo al metodo segun su valor */
+    if (isset($_POST['modulo_alumno'])) {
+        $insAlumno = new AlumnoController();
+        
+        if ($_POST['modulo_alumno']=="registrar") {
+            echo $insAlumno->registrarAlumnoControlador();
+        }
+        if ($_POST['modulo_alumno'] == "actualizar") {
+            header('Content-Type: application/json');
+            echo $insAlumno->actualizarAlumnoControlador($_POST);
+        }
+        if ($_POST['modulo_alumno'] == "eliminar") {
+            echo $insAlumno->eliminarAlumnoControlador();
+        }
+    }else {
+        session_destroy();
+		header("Location: ".APP_URL."login/");
+    }
     
     

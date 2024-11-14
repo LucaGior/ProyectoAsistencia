@@ -18,6 +18,7 @@
             echo $insInstituto->eliminarInstitutoControlador();
         }
     } else {
-        header("Location: ".APP_URL."dashboard/");
+        session_destroy();
+		header("Location: ".APP_URL."login/");
     }
     

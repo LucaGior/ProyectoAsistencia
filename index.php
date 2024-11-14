@@ -1,9 +1,17 @@
 <?php
+
     require_once "./config/app.php";
     require_once "./autoload.php";
-    
-    /* Si no hay una view definida devolver principal(dashboard) */
-    $url = isset($_GET['views']) ? explode("/", $_GET['views']) : ["dashboard"];   
+
+    /*---------- Iniciando sesion ----------*/
+    require_once "./app/views/inc/session_start.php";
+
+    if(isset($_GET['views'])){
+        $url=explode("/", $_GET['views']);
+    }else{
+        $url=["login"];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -11,21 +19,32 @@
 <head>
     <?php require_once "./app/views/inc/head.php"; ?>
 </head>
-<body> 
-    <?php 
-        /* Instanciacion ViewsController y Metodo para vistas */
-        use app\controllers\ViewsController;
-        $viewsController= new ViewsController();
-        $vista = $viewsController->obtenerVistasControlador($url[0]);
+<body>
+    <?php
+        use app\controllers\viewsController;
+        use app\controllers\loginController;
 
-        /* Si vista es 404 muetra pagina de error sino muestra pagina y aplica scripts */
-        if($vista=="404"){
+        $insLogin = new loginController();
+
+        $viewsController= new viewsController();
+        $vista=$viewsController->obtenerVistasControlador($url[0]);
+
+        if($vista=="login" || $vista=="404"){
             require_once "./app/views/content/".$vista."-view.php";
         }else{
+
+            # Cerrar sesion #
+            if((!isset($_SESSION['id']) || $_SESSION['id']=="") || (!isset($_SESSION['usuario']) || $_SESSION['usuario']=="")){
+                $insLogin->cerrarSesionControlador();
+                exit();
+            }
+
             require_once "./app/views/inc/navbar.php";
+
             require_once $vista;
         }
-        require_once "./app/views/inc/script.php";
-     ?>
+
+        require_once "./app/views/inc/script.php"; 
+    ?>
 </body>
 </html>

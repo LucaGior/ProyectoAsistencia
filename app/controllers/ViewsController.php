@@ -10,7 +10,7 @@ class ViewsController extends ViewsModel{
         if($vista!=""){
             $respuesta=$this->obtenerVistasModelo($vista);
         }else{
-            $respuesta="dashboard";
+            $respuesta="login";
         }
         return $respuesta;
     }
