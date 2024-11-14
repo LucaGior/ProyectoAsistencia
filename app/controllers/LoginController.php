@@ -5,13 +5,13 @@
 
 	class LoginController extends MainModel{
 
-		/*----------  Controlador iniciar sesion  ----------*/
+		/*  Metodo iniciar sesion  */
 		public function iniciarSesionControlador(){
 
 			$usuario=$this->limpiarCadena($_POST['login_usuario']);
 		    $clave=$this->limpiarCadena($_POST['login_clave']);
 
-		    # Verificando campos obligatorios #
+		    # Verificando campos obligatorios 
 		    if($usuario=="" || $clave==""){
 		        echo "<script>
 			        Swal.fire({
@@ -22,7 +22,7 @@
 				</script>";
 		    }else{
 
-			    # Verificando integridad de los datos #
+			    # Verificando integridad de los datos 
 			    if($this->verificarDatos("[a-zA-Z0-9]{4,20}",$usuario)){
 			        echo "<script>
 				        Swal.fire({
@@ -44,7 +44,7 @@
 						</script>";
 				    }else{
 
-					    # Verificando usuario #
+					    # Verificando usuario 
 					    $check_usuario=$this->ejecutarConsulta("SELECT * FROM usuarios WHERE usuario='$usuario'");
 
 					    if($check_usuario->rowCount()==1){
@@ -89,7 +89,7 @@
 		}
 
 
-		/*----------  Controlador cerrar sesion  ----------*/
+		/*  Metodo cerrar sesion  */
 		public function cerrarSesionControlador(){
 
 			session_destroy();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-11-2024 a las 19:12:20
+-- Tiempo de generación: 14-11-2024 a las 20:09:22
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -47,17 +47,17 @@ INSERT INTO `alumnos` (`id`, `nombre`, `apellido`, `email`, `dni`, `fecha_nac`, 
 (50, 'Valentino', 'Andrade', 'valentino.andrade@email.com', '35123456', '1999-03-12', '3512345678'),
 (51, 'Lucas', 'Cedres', 'lucas.cedres@email.com', '34876543', '1998-09-07', '3512345679'),
 (52, 'Facundo', 'Figun', 'facundo.figun@email.com', '40123789', '2000-11-25', '3512345680'),
-(53, 'Luca', 'Giordano', 'luca.giordano@email.com', '32456789', '1997-06-02', '3512345681'),
+(53, 'Luca n', 'Giordano', 'luca.giordano@email.com', '32456789', '2002-02-05', '3512345681'),
 (54, 'Bruno', 'Godoy', 'bruno.godoy@email.com', '36789123', '1999-01-18', '3512345682'),
 (55, 'Agustin', 'Gomez', 'agustin.gomez@email.com', '33567890', '1996-04-30', '3512345683'),
 (56, 'Brian', 'Gonzalez', 'brian.gonzalez@email.com', '35678901', '1997-12-05', '3512345684'),
 (57, 'Federico', 'Guigou Scottini', 'federico.guigou@email.com', '37890123', '1998-08-15', '3512345685'),
 (58, 'Luna', 'Marrano', 'luna.marrano@email.com', '38901234', '1999-03-10', '3512345686'),
 (59, 'Giuliana', 'Mercado Aviles', 'giuliana.mercado@email.com', '33345678', '1995-10-22', '3512345687'),
-(60, 'Lucila', 'Mercado Ruiz', 'lucila.mercado@email.com', '32567890', '1996-12-08', '3512345688'),
+(60, 'Lucila', 'Mercado Ruiz', 'lucila.mercado@email.com', '32567890', '1996-02-05', '3512345688'),
 (61, 'Angel', 'Murillo', 'angel.murillo@email.com', '34890123', '1998-02-27', '3512345689'),
 (62, 'Juan', 'Nissero', 'juan.nissero@email.com', '36123456', '1999-07-17', '3512345690'),
-(63, 'Fausto', 'Parada', 'fausto.parada@email.com', '35234567', '1997-11-06', '3512345691'),
+(63, 'Fausto', 'Parada', 'fausto.parada@email.com', '35234567', '1997-04-05', '3512345691'),
 (64, 'Ignacio', 'Piter', 'ignacio.piter@email.com', '32789012', '1996-05-19', '3512345692'),
 (65, 'Tomas', 'Planchon', 'tomas.planchon@email.com', '40456789', '2000-09-03', '3512345693'),
 (66, 'Elisa', 'Ronconi', 'elisa.ronconi@email.com', '31678123', '1995-01-24', '3512345694'),
@@ -65,7 +65,9 @@ INSERT INTO `alumnos` (`id`, `nombre`, `apellido`, `email`, `dni`, `fecha_nac`, 
 (68, 'Melina', 'Schimpf Baldo', 'melina.schimpf@email.com', '33789456', '1996-10-09', '3512345696'),
 (69, 'Diego', 'Segovia', 'diego.segovia@email.com', '34567890', '1997-02-13', '3512345697'),
 (70, 'Camila', 'Sittner', 'camila.sittner@email.com', '36456789', '1999-08-20', '3512345698'),
-(71, 'Yamil', 'Villa', 'yamil.villa@email.com', '35345678', '1998-06-28', '3512345699');
+(71, 'Yamil', 'Villa', 'yamil.villa@email.com', '35345678', '1998-06-28', '3512345699'),
+(78, 'aaaa', 'bbbbbb', 'aa@gmai.com', '4655', '0054-07-06', '466546'),
+(79, 'asdasd', 'aaaaaa', 'asd@gmial.com', '213413', '0223-04-23', '1333324');
 
 -- --------------------------------------------------------
 
@@ -118,7 +120,9 @@ INSERT INTO `inscripciones` (`id`, `id_alumno`, `id_materia`) VALUES
 (84, 68, 51),
 (85, 69, 51),
 (86, 70, 51),
-(87, 71, 51);
+(87, 71, 51),
+(96, 78, 54),
+(97, 79, 55);
 
 -- --------------------------------------------------------
 
@@ -137,7 +141,8 @@ CREATE TABLE `instituciones` (
 --
 
 INSERT INTO `instituciones` (`id`, `nombre`, `direccion`) VALUES
-(31, 'sedes sapientiae', 'santa fe 70');
+(31, 'sedes sapientiae', 'santa fe 70'),
+(40, 'escuela 69', 'lopes y planez');
 
 -- --------------------------------------------------------
 
@@ -156,7 +161,9 @@ CREATE TABLE `materias` (
 --
 
 INSERT INTO `materias` (`id`, `nombre`, `id_institucion`) VALUES
-(51, 'Programacion 2', 31);
+(51, 'Programacion 2', 31),
+(54, 'matematica', 40),
+(55, 'asdasd', 40);
 
 -- --------------------------------------------------------
 
@@ -192,7 +199,27 @@ CREATE TABLE `ram` (
 --
 
 INSERT INTO `ram` (`id`, `asistencia_regular`, `asistencia_promocion`, `nota_regular`, `nota_promocion`, `id_institucion`) VALUES
-(2, 60.00, 70.00, 6, 7, 31);
+(2, 60.00, 70.00, 6, 7, 31),
+(11, 60.00, 70.00, 6, 8, 40);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `clave` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `clave`) VALUES
+(1, 'admin', '$2y$10$96dYCSCOATKFl5eWLJwWPeW2qYtyNJVHwGsCU4Ff7kGfQ.VKCXyV6');
 
 --
 -- Índices para tablas volcadas
@@ -247,6 +274,12 @@ ALTER TABLE `ram`
   ADD KEY `fk_institucion_ram` (`id_institucion`) USING BTREE;
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -254,43 +287,49 @@ ALTER TABLE `ram`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de la tabla `asistencias`
 --
 ALTER TABLE `asistencias`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripciones`
 --
 ALTER TABLE `inscripciones`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT de la tabla `instituciones`
 --
 ALTER TABLE `instituciones`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `ram`
 --
 ALTER TABLE `ram`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
